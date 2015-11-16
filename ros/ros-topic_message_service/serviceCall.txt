@@ -1,0 +1,4 @@
+ros::ServiceClient client = 
+nh.serviceClient<my_package::Foo>("my_service_name",true);
+my_package::Foo foo;
+if (client.call(foo)) { ... }

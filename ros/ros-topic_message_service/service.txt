@@ -1,0 +1,8 @@
+namespace my_package {
+	struct Foo {
+		class Request{ ... };
+		class Response{ ... };
+		Request request;
+		Response response;
+	};
+} 

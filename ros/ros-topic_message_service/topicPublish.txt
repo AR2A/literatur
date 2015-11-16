@@ -1,0 +1,5 @@
+ros::Publisher pub = 
+	nh.advertise<std_msgs::String>("topic_name", 5);
+std_msgs::String str;
+str.data = "helloworld";
+pub.publish(str);
