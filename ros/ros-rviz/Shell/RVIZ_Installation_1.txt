@@ -1,0 +1,2 @@
+echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc}
+source ~/.bashrc}
