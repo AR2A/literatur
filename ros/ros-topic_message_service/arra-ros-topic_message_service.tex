@@ -1,0 +1,275 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+%----------------------------------------------------------------------------------------
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\setbeamerfont{caption}{size=\scriptsize}
+\usepackage{hyperref}
+\usepackage{listings}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[]{ROS Basics - Topics, Services \& Messages} % The short title appears at the bottom of every slide, the full title is only on the title page
+%----------------------------------------------------------------------------------------
+\author{ARRA / AR2A} % Your name
+\institute % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Advancements for Robotics in Rescue Applications
+}
+\date{\today} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+\AtBeginSection{\frame{\sectionpage}}
+%----------------------------------------------------------------------------------------
+\begin{document}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+\begin{frame}{Overview}
+	ROS consists of 3 Levels:
+	\begin{itemize}
+		\item Filesystem
+			\begin{itemize}
+				\item Packages
+				\item Disk-Files
+				\item Message types
+				\item ...
+			\end{itemize}
+		\item \underline{Computation Graph}
+			\begin{itemize}
+				\item Nodes
+				\item Topcis
+				\item Services
+				\item ...
+			\end{itemize}
+		\item Community
+			\begin{itemize}
+				\item Repositories
+				\item Wiki
+				\item ...
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}{Node}
+	\begin{itemize}
+		\item Process, which performs computation
+		\item Control different parts of the robot (motors, rangefinder)
+		\item Communication via messages/services
+		\item Peer-to-peer network, master only registers nodes, topics, ...
+		\item Identified by the graph resource name (hierarchical naming structure for topics/services/nodes/...)
+		\item Name can be remapped at runtime
+		\item Information about the running nodes can be shown with the tool ``rosnode``
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Message}
+	\begin{itemize}
+		\item Data structure, which can also be nested
+		\item Standard data-types: int, float, string, time, array
+		\item Special type ``Header``: contains timestamp and coordinate frame
+		\item Simple textfiles: each line contains the type and name of a field
+		\item Only useful for unidirectional communication; subscribers are unaware of all the publishers
+		\item Information about messages can be shown with the tool ``rosmsg``
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Create message (1)}
+	\begin{itemize}
+		\item Create a .msg-file. For example:
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{msgFile.txt}
+		\item Naming convention for msg-types: name of the package + '/' + name of the .msg file\\
+		\item \textbf{Example:} the file ``std\_msgs/msg/String.msg`` results in a message type of ``std\_msgs/String``
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Create message (2)}
+	\begin{itemize}
+		\item Enable the generation of source code from the msg-files
+		\item In the \textbf{package.xml} uncomment/add:
+	\end{itemize}
+	
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{package.txt}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Create message (3)}
+	\begin{itemize}
+		\item Example \textbf{CMakeList.txt} for a package with a message depending on std\_msgs
+	\end{itemize}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{message.txt}		
+\end{frame}
+
+\begin{frame}{Topic}
+	\begin{itemize}
+		\item Simple string specified when publishing/subscribing to a message
+	\end{itemize}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{topic.txt}
+	\begin{itemize}
+		\item The topic-type is defined by the message type $\rightarrow$ only one type per topic
+		\item A subscriber will not accept a message of a different type
+	\end{itemize}	
+\end{frame}	
+
+\begin{frame}{Publish to a topic}
+	\begin{itemize}
+		\item Example for publishing a standard message (string) to a topic
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{topicPublish.txt}
+		\item Advertise:
+		\begin{itemize}
+			\item The first parameter is the topic-name
+			\item The second parameter specifies the maximum number of outgoing messages queued for delivery			
+		\end{itemize}
+	\end{itemize}
+\end{frame}	
+
+\begin{frame}{Subscribe to a topic}
+	Function:
+	\begin{itemize}
+		\item ros::Subscriber subscribe( ... )
+	\end{itemize}
+	Parameters:
+	\begin{itemize}
+		\item \textbf{const std::string\& topic}: topic name
+		\item \textbf{uint32\_t queue\_size}: queue for incoming messages (0 is infinite, but dangerous)
+		\item \textbf{$<$callback$>$}: e.g. class method pointer and class instance pointer
+		\item \textbf{const ros::TransportHints\& transport\_hints}: hint for the transport layer (preferred UDP transport, ...)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Service}
+	\begin{itemize}
+		\item Node offers service under a certain string name
+		\item Provide service with ``ros::NodeHandle::advertiseService(string, callback)`` $\rightarrow$ provide a service name and a callback-function
+		\item A client can make a persistent connection to a service, which enhances the performance
+		\item ``rosservice``: tool for seeing a list of available services and making queries
+		\item ``rossrv``: tool, which displays information about .srv data structures
+	\end{itemize}
+\end{frame}	
+
+\begin{frame}{Create service (1)}
+	\begin{itemize}
+		\item Create .srv-file
+		\item Structure for request and reply (similar to a remote procedure call)
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{serviceCreate.txt}
+		\item Service type similar to a message: package name + '/' + the name of the .srv file\\
+		\textbf{Example:} ``my\_srvs/srv/MyService.srv`` results in the service type ``my\_srvs/MyService``
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Create service (2)}
+	Same process as with messages\\
+	In the CMakeLists.txt:\\
+	\begin{itemize}
+		\item Additionally add the created .svg-files to the add\_message\_files() call\\
+		to declare the service files to be built
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Service: Generated Structure}
+	\begin{itemize}
+		\item Roscpp generates a structure with C++-Classes for a service:
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{service.txt}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Service: Calling a service}
+	\begin{itemize}
+		\item Call-method from the ``ros::service`` namespace\\
+		``foo`` is the request/response structure
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{callService.txt}	
+		\item With node handle\\
+		Enable a persistent connection with second parameter
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{serviceCall.txt}
+	\end{itemize}
+\end{frame}
+%\begin{frame}[allowframebreaks]{References}
+%\scriptsize{\bibliographystyle{ieeetr}}
+%\bibliography{references} %bibtex file name without .bib extension
+%\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\end{document} 
+%----------------------------------------------------------------------------------------

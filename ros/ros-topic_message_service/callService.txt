@@ -1,0 +1,2 @@
+my_package::Foo foo;
+if (ros::service::call("my_service_name", foo)) { ... }

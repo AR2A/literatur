@@ -1,0 +1,87 @@
+TODO:
+
+-messages
+-message generieren (.msg .srv)
+-neue datentypen
+-service bauen und verwendet (standard message)
+-UPD sockets
+
+===================================================
+
+nodes, topics and services are identified by names which can be remapped at runtime
+
+TOPIC:
+------
+
+Type: defined by the ROS message type. nodes can only recieve messages with matching type, beim builden festgelegt
+communication via TCP/IP (standard) or UDP (optimal for teleoperation/video but with losses)
+is only a string specified when publishing a message organized in hirarchy ("camera/rgb/data")
+
+
+SERVICES:
+---------
+
+Services used for communication with reply
+structure for request and reply (similar to remote procedure call)
+
+message-pair: request, reply
+node offers service with certain name
+
+each service has a type, which consists of t
+service can only be successfully called by a node if the MD5 sum and type match
+
+=============================================================
+create message:
+=============================================================
+create .msg file 
+
+for example:
+
+string first_name
+string last_name
+uint8 age
+uint32 score
+-------------------------------------------------------------
+package.xml
+
+add/uncomment this lines to 
+
+<build_depend>message_generation</build_depend>
+<run_depend>message_runtime</run_depend>
+
+this enables the generation of source-code from the msg-files
+-------------------------------------------------------------
+
+CMakeLists.txt
+
+uncomment ``include_dirs`` in the catkin_package() call
+
+add ``message_generation`` to the function call find_package()
+
+add ``CATKIN_DEPENDS message_runtime`` to the catkin_package() call
+
+add the created .msg file to add_message_files()
+
+add_executable(pub src/chickenonaraft_pub.cpp)
+
+target_link_libraries(pub $(catking_LIBRARIES))
+
+uncomment:
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
+
+=============================================================
+create publisher
+
+package/src
+
+create publisher.cpp-File
+-------------------------------------------------------------
+
+CMakeLists.txt
+
+uncomment: 
+add_executable()
+target link_libraries()
