@@ -1,0 +1,10 @@
+Published topics:
+* /turtle1/color_sensor [turtlesim/Color] 1 publisher
+* /turtle1/cmd_vel [geometry_msgs/Twist] 1 publisher
+* /rosout [rosgraph_msgs/Log] 2 publishers
+* /rosout_agg [rosgraph_msgs/Log] 1 publisher
+* /turtle1/pose [turtlesim/Pose] 1 publisher
+
+Subscribed topics:
+* /turtle1/cmd_vel [geometry_msgs/Twist] 1 subscriber
+* /rosout [rosgraph_msgs/Log] 1 subscriber

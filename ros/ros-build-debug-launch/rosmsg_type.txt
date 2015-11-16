@@ -1,0 +1,1 @@
+$ rosmsg show sensor_msgs/CameraInfo

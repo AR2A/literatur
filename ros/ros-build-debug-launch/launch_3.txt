@@ -1,0 +1,4 @@
+ <launch>
+    <!-- chickenonaraft_pub-->
+    <node pkg="chickenonaraft" type="chickenonaraft_node" 				name="sim"/>				
+  </launch>
