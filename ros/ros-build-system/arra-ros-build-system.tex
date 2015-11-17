@@ -100,14 +100,17 @@
 \titlepage
 \end{frame}
 %----------------------------------------------------------------------------------------
+\begin{frame}
+\tableofcontents
+\end{frame}
 %----------------------------------------------------------------------------------------
-\begin{frame}{Introduction - ROS Packages\cite{ROS:2015:Online}}
- \textbf{Why ROS-Packages}
+\begin{frame}{Introduction 1}
  \begin{itemize}
  \item Software in ROS is organized in packages
  \item It provides a way to easily reuse ROS-Software
  \end{itemize}
-  \textbf{A ROS package might contain:}
+ \vspace{1cm}
+ \textbf{A ROS package might contain:}
  \begin{itemize}
  \item ROS nodes
  \item  a ROS-independent library
@@ -118,20 +121,73 @@
  \end{itemize}
 \end{frame}
 %----------------------------------------------------------------------------------------
+\begin{frame}{Introduction 2}
+\begin{large}
+\textbf{Why does ROS have a custom build system?}
+\end{large}
+\vspace{1cm}
+\\For development of single software projects, existing tools like Autotools, CMake, and the build systems included with IDEs tend to be sufficient.
+\newline
+\newline
+ROS is a very large collection of loosely federated packages. That means lots of independent packages which depend on each other, utilize various programming languages, tools, and code organization conventions.
+\end{frame}
 %----------------------------------------------------------------------------------------
-\begin{frame}{Introduction - Catkin\cite{ROS:2015:Online}}
- \textbf{What is Catkin?}
- \begin{itemize}
+\section{rosbuild\cite{ROS:2015:Online}}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Utilities}
+\begin{large}\textbf{Tools for installing, building and locating of packages}\end{large}
+
+\begin{itemize}
+	\item Build: 							rosmake
+	\item Install:							rosinstall
+	\item Searching for packages:			roslocate
+	\item Install thirdparty libraries:		rosdep
+	\item Packages:							rospack, roscd
+	\item Stacks:							rosstack, roscd
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosmake 1}
+	
+\begin{large}\textbf{Build: rosmake}\end{large}
+
+\begin{itemize}
+\item rosmake is a tool to assist with building ROS packages. It facilitates building packages that have dependencies.
+\item ROS comprises a large number of packages. With the exception of some core packages that everything else depends on, many of the packages are largely independent. ROS provides build system to allow to only build what is actually necessary to run the packages.
+\item A package may depend on any number of other packages, requiring that those packages be built first. These dependencies are specified in the package's manifest.xml file.
+\item rosmake do the ROS-wide build of everything need for a given package.
+\end{itemize} 
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosmake 2}
+\begin{large}\textbf{Example: build move\_base}\end{large}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmake.txt}
+
+rosmake will determine move\_base's dependencies (and the dependencies' dependencies), and will ensure that all dependencies are built prior to building move\_base.\\	
+\begin{itemize}
+	\item \url{http://wiki.ros.org/rosmake}
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+	\Huge{\centerline{R.I.P. rosbuild}}
+\end{frame}	
+%----------------------------------------------------------------------------------------
+\section{catkin\cite{ROS:2015:Online}}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Overview}
+ \begin{large}\textbf{What is Catkin?}\end{large}
+  \begin{definition}
+   Catkin was designed to be more conventional than rosbuild, allowing for better distribution of packages, better cross-compiling support, and better portability.
+  \end{definition}
+\begin{itemize}
  \item Catkin is the official build system of ROS (which replaces rosbuild)
  \item It combines CMake macros and Python scripts to provide some functionality on top of CMake's normal workflow
  \item Support for automatic 'find package' infrastructure and building multiple, dependent projects at the same time
  \end{itemize}
-
 \end{frame}
 %----------------------------------------------------------------------------------------
-%\section{Concepts}
-%----------------------------------------------------------------------------------------
-\begin{frame}{General structure of a ROS-Packages\cite{ROS:2015:Online}}
+\begin{frame}{General structure of a ROS Package}
 \begin{figure}
   \includegraphics[width=0.6\textwidth]{./images/structure.pdf}
 \end{figure}
@@ -149,7 +205,7 @@
 %----------------------------------------------------------------------------------------
 %\section{Concepts}
 %----------------------------------------------------------------------------------------
-\begin{frame}{Setup the built environment\cite{ROS:2015:Online}}
+\begin{frame}{Setup the built environment}
  \textbf{Creating a workspace}
  %\begin{itemize}
  %\item \$ source /opt/ros/indigo/setup.bash
@@ -176,7 +232,7 @@
 \end{frame}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\begin{frame}{Create and Build a ROS Package\cite{ROS:2015:Online}}
+\begin{frame}{Create and Build a ROS Package}
  \textbf{Create a new package called ’beginner\_tutorials’ which
 depends on std\_msgs, roscpp, and rospy
 }
@@ -184,7 +240,7 @@ depends on std\_msgs, roscpp, and rospy
  %\item \$ catkin\_create\_pkg beginner\_tutorials std\_msgs rospy roscpp
  %\end{itemize}
    \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/crate_new_package.txt}
-
+ \vspace{5mm}
  \textbf{Build a package}
  %\begin{itemize}
  %\item \$ cd \textasciitilde/catkin\_ws/
@@ -194,11 +250,10 @@ depends on std\_msgs, roscpp, and rospy
 \end{frame}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\begin{frame}{Eclipse and ROS\cite{ROS:2015:Online}}
+\begin{frame}{Eclipse and ROS 1}
  \textbf{Creating the Eclipse project files}
- 
- \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/creating_the_eclipse_project_files.txt}
- 
+  \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/creating_the_eclipse_project_files.txt}
+ \vspace{5mm}
  \textbf{Importing the project into Eclipse}
  \begin{itemize}
  \item Start Eclipse, select File  --\textgreater  Import. Select  Existing projects into workspace, hit next, then browse for your package's directory (select root directory). Do NOT select Copy projects into workspace. Then finish.
@@ -206,7 +261,7 @@ depends on std\_msgs, roscpp, and rospy
 \end{frame}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\begin{frame}{Eclipse and ROS\cite{ROS:2015:Online}}
+\begin{frame}{Eclipse and ROS 2}
 
  \textbf{Importing the project into Eclipse}
 
@@ -227,11 +282,11 @@ depends on std\_msgs, roscpp, and rospy
 \end{frame}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\begin{frame}{Eclipse and ROS\cite{ROS:2015:Online}}
+\begin{frame}{Eclipse and ROS 3}
 
 \begin{figure}
 	\centering
-  \includegraphics[width=0.35\textwidth]{./images/file.pdf}
+  \includegraphics[width=0.50\textwidth]{./images/file.pdf}
 	\caption{Browse for your package's directory (select root directory). Do NOT select Copy projects into workspace. Then finish.}
 	\label{fig1}
 \end{figure}

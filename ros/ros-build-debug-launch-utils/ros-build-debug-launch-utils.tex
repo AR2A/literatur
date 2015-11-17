@@ -108,64 +108,6 @@
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
-\section{Build Utilities}
-%----------------------------------------------------------------------------------------
-\begin{frame}{Why Does ROS Have a Custom Build System?}
-For development of single software projects, existing tools like Autotools, CMake, and the build systems included with IDEs tend to be sufficient.
-\newline
-\newline
-ROS is a very large collection of loosely federated packages. That means lots of independent packages which depend on each other, utilize various programming languages, tools, and code organization conventions.
-\end{frame}
-%----------------------------------------------------------------------------------------
-\begin{frame}{Overview - rosbuild}
-\begin{large}\textbf{Install, build and filesystem tools:}\end{large}
-
-\begin{itemize}
-	\item Build: 							rosmake
-	\item Install:							rosinstall
-	\item Searching for packages:			roslocate
-	\item Install thirdparty libraries:		rosdep
-	\item Packages:							rospack, roscd
-	\item Stacks:							rosstack, roscd
-\end{itemize}
-\end{frame}
-%----------------------------------------------------------------------------------------
-\begin{frame}{Utilities - rosmake}
-	
-\begin{large}\textbf{Build: rosmake}\end{large}
-
-\begin{itemize}
-\item rosmake is a tool to assist with building ROS packages. It facilitates building packages that have dependencies.
-\item ROS comprises a large number of packages. With the exception of some core packages that everything else depends on, many of the packages are largely independent. ROS provides build system to allow to only build what is actually necessary to run the packages.
-\item A package may depend on any number of other packages, requiring that those packages be built first. These dependencies are specified in the package's manifest.xml file.
-\item rosmake do the ROS-wide build of everything need for a given package.
-\end{itemize} 
-\end{frame}
-%----------------------------------------------------------------------------------------
-\begin{frame}{Utilities - rosmake}
-\begin{large}\textbf{Example: build move\_base}\end{large}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmake.txt}
-
-rosmake will determine move\_base's dependencies (and the dependencies' dependencies), and will ensure that all dependencies are built prior to building move\_base.\\	
-\begin{itemize}
-	\item \url{http://wiki.ros.org/rosmake}
-\end{itemize}
-\end{frame}
-%----------------------------------------------------------------------------------------
-\begin{frame}
-	\Huge{\centerline{R.I.P. rosbuild}}
-\end{frame}	
-%----------------------------------------------------------------------------------------
-\begin{frame}{Build with catkin}
-	\begin{large}\textbf{catkin:}\end{large}
-	\newline
-	\newline
-	catkin is the official build system of ROS and the successor to the original ROS build system, rosbuild.
-	\newline
-	\newline
-	catkin was designed to be more conventional than rosbuild, allowing for better distribution of packages, better cross-compiling support, and better portability.
-\end{frame}
-%----------------------------------------------------------------------------------------
 \section{Debug Utilities}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Debug - Overview}
