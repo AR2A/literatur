@@ -133,7 +133,7 @@
 %----------------------------------------------------------------------------------------
 \begin{frame}{General structure of a ROS-Packages}
 \begin{figure}
-  \includegraphics[width=0.6\textwidth]{structure.pdf}
+  \includegraphics[width=0.6\textwidth]{./images/structure.pdf}
 \end{figure}
 % \begin{itemize}
  %\item include/package\_name: include C++ headers 
@@ -157,13 +157,13 @@
  %\item \$ cd \textasciitilde/catkin\_ws/src
  %\item \$ catkin\_init\_workspace
  %\end{itemize}
- \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{setup_the_build_environment.txt}
+ \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/setup_the_build_environment.txt}
  \textbf{Build empty project}
 % \begin{itemize}
 % \item \$ cd \textasciitilde/catkin\_ws/
 % \item \$ catkin\_make
 % \end{itemize}
-  \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{build_empty_project.txt}
+  \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/build_empty_project.txt}
 
  \textbf{Environment-Variables loaded?}
  %\begin{itemize}
@@ -171,7 +171,7 @@
  %\item \$ echo \$ROS\_PACKAGE\_PATH
  %\item /home/youruser/catkin\_ws/src:/opt/ros/indigo/share: /opt/ros/indigo/stacks
  %\end{itemize}
-  \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{environment_variables_loaded.txt}
+  \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/environment_variables_loaded.txt}
 
 \end{frame}
 %----------------------------------------------------------------------------------------
@@ -183,21 +183,21 @@ depends on std\_msgs, roscpp, and rospy
  %\begin{itemize}
  %\item \$ catkin\_create\_pkg beginner\_tutorials std\_msgs rospy roscpp
  %\end{itemize}
-   \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{crate_new_package.txt}
+   \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/crate_new_package.txt}
 
  \textbf{Build a package}
  %\begin{itemize}
  %\item \$ cd \textasciitilde/catkin\_ws/
  %\item \$ catkin\_make
  %\end{itemize}
-    \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{build_a_package.txt}
+    \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/build_a_package.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \begin{frame}{Eclipse and ROS}
  \textbf{Creating the Eclipse project files}
  
- \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{creating_the_eclipse_project_files.txt}
+ \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/creating_the_eclipse_project_files.txt}
  
  \textbf{Importing the project into Eclipse}
  \begin{itemize}
@@ -214,12 +214,12 @@ depends on std\_msgs, roscpp, and rospy
     \centering
     \begin{minipage}{0.45\linewidth}
         \centering
-        \includegraphics[scale=0.3]{import.pdf}
+        \includegraphics[scale=0.3]{./images/import.pdf}
     \end{minipage}
     %\hfill
     \begin{minipage}{0.45\linewidth}
         \centering
-        \includegraphics[scale=0.35]{select.pdf}
+        \includegraphics[scale=0.35]{./images/select.pdf}
     \end{minipage}
         \caption{Start Eclipse, select File  --\textgreater  Import. Select Existing projects into workspace, hit next.}
 \end{figure}
@@ -231,7 +231,7 @@ depends on std\_msgs, roscpp, and rospy
 
 \begin{figure}
 	\centering
-  \includegraphics[width=0.35\textwidth]{file.pdf}
+  \includegraphics[width=0.35\textwidth]{./images/file.pdf}
 	\caption{Browse for your package's directory (select root directory). Do NOT select Copy projects into workspace. Then finish.}
 	\label{fig1}
 \end{figure}
