@@ -1,0 +1,176 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+%----------------------------------------------------------------------------------------
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{subfigure}
+\setbeamerfont{caption}{size=\scriptsize}
+\usepackage{hyperref}
+\usepackage{listings}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[]{ROS Tools: roslaunch} % The short title appears at the bottom of every slide, the full title is only on the title page
+%----------------------------------------------------------------------------------------
+\author{ARRA / AR2A} % Your name
+\institute % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+\textbf{A}dvancements for \textbf{R}obotics in \textbf{R}escue \textbf{A}pplications
+}
+\date{\today} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+\AtBeginSection{\frame{\sectionpage}}
+%----------------------------------------------------------------------------------------
+\begin{document}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+\begin{frame}{Overview 1}
+\begin{large}
+	\textbf{roslaunch} \newline \newline
+\end{large}
+roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server. \newline \newline
+It takes in one or more XML configuration files (with the .launch extension) that specify the parameters to set and nodes to launch.
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Overview 2}
+	\begin{large}
+		\textbf{Advantages:} \newline
+	\end{large}
+\begin{itemize}
+	\item Starting implicitly the ROS "core", that's a collection of nodes and programs that are pre-requisites of a ROS-based system.
+	\newline
+	\item The launch file syntax itself is stable, and every effort will be made to provide backwards compatibility with new features. 
+	\newline
+	\item Option to set the necessary parameters for the single packages. 
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Launch Files 1}
+\begin{itemize}
+ \item Many ROS packages come with "launch files", which can be runned with:
+ \vspace{10px}
+ \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch.txt}
+ \vspace{10px}
+ These launch files usually bring up a set of nodes for the package that provide some aggregate functionality. 
+\end{itemize}
+\begin{itemize}
+ \item Launch files can be found under the following path:
+ \vspace{10px}
+ \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_4.txt} 
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Launch Files 2 - Example 1}
+\begin{large}
+	\textbf{Launch-File from example learning\_tf} 
+\end{large}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_2.txt}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Launch Files 3 - Example 2}
+	\begin{large}
+		\textbf{Launch-File from example chickenonaraft} 
+	\end{large}
+	\vspace{10px}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_3.txt}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Launch file calling launch files}
+\begin{itemize}
+\item Large applications on a robot typically involve several interconnected nodes, each of which have many parameters. For this you can create a separately package only for the startup launch file:
+\vspace{10px}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_5.txt}
+\vspace{10px}
+For the startup package are no further dependencies necessary. 
+\end{itemize}
+\begin{itemize}
+ \item In the separately package the launch file calls the other launch files:
+ \lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_1.txt}
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\end{document} 
+%----------------------------------------------------------------------------------------
