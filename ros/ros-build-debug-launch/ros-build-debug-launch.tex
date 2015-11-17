@@ -144,7 +144,7 @@ ROS is a very large collection of loosely federated packages. That means lots of
 %----------------------------------------------------------------------------------------
 \begin{frame}{Utilities - rosmake}
 \begin{large}\textbf{Example: build move\_base}\end{large}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosmake.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmake.txt}
 
 rosmake will determine move\_base's dependencies (and the dependencies' dependencies), and will ensure that all dependencies are built prior to building move\_base.\\	
 \begin{itemize}
@@ -199,10 +199,10 @@ The \textit{list} command prints information about the active topics on the scre
 \newline
 \textbf{Command:} 
 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rostopic.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic.txt}
 
 \textbf{Output:}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rostopic_output.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_output.txt}
 
 \end{frame}
 %----------------------------------------------------------------------------------------
@@ -210,9 +210,9 @@ The \textit{list} command prints information about the active topics on the scre
 The \textit{echo} command shows the messages from the topics on the screen.
 \newline
 \textbf{Command:} 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rostopic_echo.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_echo.txt}
 \textbf{Output:}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rostopic_echo_2.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_echo_2.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Debug - rosservice}
@@ -234,10 +234,10 @@ A given turtle demo was used for the following example.
 \newline
 The \textit{list} command shows the services from the turtlesim node demo.
 \textbf{Command:} 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_list.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_list.txt}
 
 \textbf{Output:}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_list_2.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_list_2.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{rosservice - Example}
@@ -245,24 +245,24 @@ The \textit{type} command shows what type the service is.
 \newline
 \newline
 \textbf{Command:} 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_clear.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear.txt}
 \textbf{Output:}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_clear_1.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_1.txt}
 This service is empty, this means when the service call is made it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response).
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{rosservice - Example}
 The \textit{call} command perform the used service.
 \textbf{Command:} 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_clear_2.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_2.txt}
 There are no further arguments because the service is of type empty.
 \newline
 Otherwise the usage is:
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosservice_clear_3.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_3.txt}
 This does what expected, it clears the background of the turtlesim\_node.
 \begin{figure}[h]\centering
-	\subfigure[Figure 1]{\includegraphics[width = 0.26\textwidth]{turtle_line.png}}
-	\subfigure[Figure 2]{\includegraphics[width = 0.285\textwidth]{turtle_clear.png}}
+	\subfigure[Figure 1]{\includegraphics[width = 0.26\textwidth]{./images/turtle_line.png}}
+	\subfigure[Figure 2]{\includegraphics[width = 0.285\textwidth]{./images/turtle_clear.png}}
 \end{figure}
 \end{frame}
 %----------------------------------------------------------------------------------------
@@ -293,10 +293,10 @@ This does what expected, it clears the background of the turtlesim\_node.
 The \textit{type} command shows what type the service is.
 \newline
 \textbf{Command:} 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosmsg_type.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmsg_type.txt}
 
 \textbf{Output:}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{rosmsg_type_1.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmsg_type_1.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Debug - rossrv}
@@ -326,7 +326,7 @@ The \textit{type} command shows what type the service is.
 \begin{frame}{rqt Example 1}
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=1\textwidth]{rqt.png}
+	\includegraphics[width=1\textwidth]{./images/rqt.png}
 	\caption{Read messages with rqt turtle demo.}
 	\label{fig::rqt}
 \end{figure}
@@ -335,7 +335,7 @@ The \textit{type} command shows what type the service is.
 \begin{frame}{rqt Example 2}
 	\begin{figure}[p]
 		\centering
-		\includegraphics[width=1\textwidth]{chickenrqt.png}
+		\includegraphics[width=1\textwidth]{./images/chickenrqt.png}
 		\caption{Read messages with rqt from chicken demo.}
 		\label{fig::rqt}
 	\end{figure}
@@ -367,7 +367,7 @@ It takes in one or more XML configuration files (with the .launch extension) tha
 \begin{frame}{Launch Files}
 Many ROS packages come with "launch files", which can be runned with:
 
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch.txt}
 
 These launch files usually bring up a set of nodes for the package that provide some aggregate functionality. 
 \end{frame}
@@ -376,29 +376,29 @@ These launch files usually bring up a set of nodes for the package that provide 
 \begin{large}
 	\textbf{Launch-File from example learning\_tf} 
 \end{large}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch_2.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_2.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Launch Files - Example 2}
 	\begin{large}
 		\textbf{Launch-File from example chickenonaraft} 
 	\end{large}
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch_3.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_3.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Launch Files}
 	The stucture of the path is usually: \\
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch_4.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_4.txt}
 	
 	Large applications on a robot typically involve several interconnected nodes, each of which have many parameters. For this you can create a separately package only for the startup launch file:
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch_5.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_5.txt}
 	For the startup package are no further dependencies necessary.
 	
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Launch Files}
 In the separately package the launch file calls the other launch files:
-\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{launch_1.txt}
+\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/launch_1.txt}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
