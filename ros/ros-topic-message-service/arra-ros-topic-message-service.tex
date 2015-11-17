@@ -155,7 +155,7 @@ Advancements for Robotics in Rescue Applications
 \begin{frame}{Create message (1)}
 	\begin{itemize}
 		\item Create a .msg-file. For example:
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{msgFile.txt}
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/msgFile.txt}
 		\item Naming convention for msg-types: name of the package + '/' + name of the .msg file\\
 		\item \textbf{Example:} the file ``std\_msgs/msg/String.msg`` results in a message type of ``std\_msgs/String``
 	\end{itemize}
@@ -167,7 +167,7 @@ Advancements for Robotics in Rescue Applications
 		\item In the \textbf{package.xml} uncomment/add:
 	\end{itemize}
 	
-	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{package.txt}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/package.txt}
 
 \end{frame}
 
@@ -176,14 +176,14 @@ Advancements for Robotics in Rescue Applications
 	\begin{itemize}
 		\item Example \textbf{CMakeList.txt} for a package with a message depending on std\_msgs
 	\end{itemize}
-	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{message.txt}		
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/message.txt}		
 \end{frame}
 
 \begin{frame}{Topic}
 	\begin{itemize}
 		\item Simple string specified when publishing/subscribing to a message
 	\end{itemize}
-	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{topic.txt}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/topic.txt}
 	\begin{itemize}
 		\item The topic-type is defined by the message type $\rightarrow$ only one type per topic
 		\item A subscriber will not accept a message of a different type
@@ -193,7 +193,7 @@ Advancements for Robotics in Rescue Applications
 \begin{frame}{Publish to a topic}
 	\begin{itemize}
 		\item Example for publishing a standard message (string) to a topic
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{topicPublish.txt}
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/topicPublish.txt}
 		\item Advertise:
 		\begin{itemize}
 			\item The first parameter is the topic-name
@@ -230,7 +230,7 @@ Advancements for Robotics in Rescue Applications
 	\begin{itemize}
 		\item Create .srv-file
 		\item Structure for request and reply (similar to a remote procedure call)
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{serviceCreate.txt}
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/serviceCreate.txt}
 		\item Service type similar to a message: package name + '/' + the name of the .srv file\\
 		\textbf{Example:} ``my\_srvs/srv/MyService.srv`` results in the service type ``my\_srvs/MyService``
 	\end{itemize}
@@ -248,7 +248,7 @@ Advancements for Robotics in Rescue Applications
 \begin{frame}{Service: Generated Structure}
 	\begin{itemize}
 		\item Roscpp generates a structure with C++-Classes for a service:
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{service.txt}	
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/service.txt}	
 	\end{itemize}
 \end{frame}
 
@@ -256,10 +256,10 @@ Advancements for Robotics in Rescue Applications
 	\begin{itemize}
 		\item Call-method from the ``ros::service`` namespace\\
 		``foo`` is the request/response structure
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{callService.txt}	
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/callService.txt}	
 		\item With node handle\\
 		Enable a persistent connection with second parameter
-		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{serviceCall.txt}
+		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/serviceCall.txt}
 	\end{itemize}
 \end{frame}
 %\begin{frame}[allowframebreaks]{References}
