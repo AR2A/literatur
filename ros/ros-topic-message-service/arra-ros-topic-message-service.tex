@@ -100,6 +100,10 @@ Advancements for Robotics in Rescue Applications
 \titlepage % Print the title page as the first slide
 \end{frame}
 %----------------------------------------------------------------------------------------
+\begin{frame}
+	\tableofcontents
+\end{frame}
+%----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 \begin{frame}{ARRA/AR2A}
@@ -121,6 +125,8 @@ Advancements for Robotics in Rescue Applications
  \item \textbf{CC-BY-SA 4.0} \url{https://creativecommons.org/licenses/by-sa/4.0/}
 \end{itemize}
 \end{frame}
+%----------------------------------------------------------------------------------------
+\section{Introdution}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Overview}
 	ROS consists of 3 Levels:
@@ -147,7 +153,6 @@ Advancements for Robotics in Rescue Applications
 			\end{itemize}
 	\end{itemize}
 \end{frame}
-
 %----------------------------------------------------------------------------------------
 \begin{frame}{Node}
 	\begin{itemize}
@@ -161,6 +166,8 @@ Advancements for Robotics in Rescue Applications
 	\end{itemize}
 \end{frame}
 %----------------------------------------------------------------------------------------
+\section{ROS Topic}
+%----------------------------------------------------------------------------------------
 \begin{frame}{Message}
 	\begin{itemize}
 		\item Data structure, which can also be nested
@@ -172,7 +179,7 @@ Advancements for Robotics in Rescue Applications
 	\end{itemize}
 \end{frame}
 %----------------------------------------------------------------------------------------
-\begin{frame}{Create message (1)}
+\begin{frame}{Create a custom message (1)}
 	\begin{itemize}
 		\item Create a .msg-file. For example:
 		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/msgFile.txt}
@@ -180,8 +187,8 @@ Advancements for Robotics in Rescue Applications
 		\item \textbf{Example:} the file ``std\_msgs/msg/String.msg`` results in a message type of ``std\_msgs/String``
 	\end{itemize}
 \end{frame}
-
-\begin{frame}{Create message (2)}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Create a custom message (2)}
 	\begin{itemize}
 		\item Enable the generation of source code from the msg-files
 		\item In the \textbf{package.xml} uncomment/add:
@@ -190,15 +197,14 @@ Advancements for Robotics in Rescue Applications
 	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/package.txt}
 
 \end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Create message (3)}
+%----------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Create a custom message (3)}
 	\begin{itemize}
 		\item Example \textbf{CMakeList.txt} for a package with a message depending on std\_msgs
 	\end{itemize}
 	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/message.txt}		
 \end{frame}
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Topic}
 	\begin{itemize}
 		\item Simple string specified when publishing/subscribing to a message
@@ -209,7 +215,7 @@ Advancements for Robotics in Rescue Applications
 		\item A subscriber will not accept a message of a different type
 	\end{itemize}	
 \end{frame}	
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Publish to a topic}
 	\begin{itemize}
 		\item Example for publishing a standard message (string) to a topic
@@ -221,7 +227,7 @@ Advancements for Robotics in Rescue Applications
 		\end{itemize}
 	\end{itemize}
 \end{frame}	
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Subscribe to a topic}
 	Function:
 	\begin{itemize}
@@ -235,7 +241,71 @@ Advancements for Robotics in Rescue Applications
 		\item \textbf{const ros::TransportHints\& transport\_hints}: hint for the transport layer (preferred UDP transport, ...)
 	\end{itemize}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
+\begin{frame}{rostopic (1)}
+	rostopic is a command line based debug tool which allows you to retrieve information about ROS topics.
+	\newline
+	\newline
+	\begin{large}\textbf{Available sub-commands:}\end{large}
+	\begin{itemize}
+		\item rostopic bw:     \textit{display bandwidth used by topic}
+		\item rostopic echo:   \textit{print messages to screen}
+		\item rostopic hz:     \textit{display publishing rate of topic}    
+		\item rostopic list:   \textit{print information about active topics}
+		\item rostopic pub:    \textit{publish data to topic}
+		\item rostopic type:   \textit{print topic type}
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rostopic (2)}
+	\textbf{Example:} A given turtle demo was used for the following example.
+	\newline
+	The \textit{list} command prints information about the active topics on the screen.
+	\newline
+	\textbf{Command:} 
+	
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic.txt}
+	
+	\textbf{Output:}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_output.txt}
+	
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rostopic (3)}
+	\textbf{Example:} The \textit{echo} command shows the messages from the topics on the screen.
+	\newline
+	\textbf{Command:} 
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_echo.txt}
+	\textbf{Output:}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rostopic_echo_2.txt}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosmsg (1)}
+	\textbf{rosmsg} is a command-line tool for displaying information about ROS Message types.
+	\newline
+	\newline
+	\begin{large}\textbf{Available sub-commands for rosmsg:}\end{large}
+	\begin{itemize}
+		\item rosmsg show: Show message description 
+		\item rosmsg list: List all messages
+		\item rosmsg md5: Display message md5sum
+		\item rosmsg package: List messages in a package
+		\item rosmsg packages: List packages that contain messages
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosmsg (2)}
+	The \textit{type} command shows what type the service is.
+	\newline
+	\textbf{Command:} 
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmsg_type.txt}
+	
+	\textbf{Output:}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosmsg_type_1.txt}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\section{ROS Service}
+%----------------------------------------------------------------------------------------
 \begin{frame}{Service}
 	\begin{itemize}
 		\item Node offers service under a certain string name
@@ -245,7 +315,7 @@ Advancements for Robotics in Rescue Applications
 		\item ``rossrv``: tool, which displays information about .srv data structures
 	\end{itemize}
 \end{frame}	
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Create service (1)}
 	\begin{itemize}
 		\item Create .srv-file
@@ -255,7 +325,7 @@ Advancements for Robotics in Rescue Applications
 		\textbf{Example:} ``my\_srvs/srv/MyService.srv`` results in the service type ``my\_srvs/MyService``
 	\end{itemize}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Create service (2)}
 	Same process as with messages\\
 	In the \textbf{CMakeLists.txt}:\\
@@ -264,14 +334,14 @@ Advancements for Robotics in Rescue Applications
 		to declare the service files to be built
 	\end{itemize}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Service: Generated Structure}
 	\begin{itemize}
 		\item Roscpp generates a structure with C++-Classes for a service:
 		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/service.txt}	
 	\end{itemize}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
 \begin{frame}{Service: Calling a service}
 	\begin{itemize}
 		\item Call-method from the ``ros::service`` namespace\\
@@ -282,6 +352,81 @@ Advancements for Robotics in Rescue Applications
 		\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/serviceCall.txt}
 	\end{itemize}
 \end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosservice (1)}
+	rosservice is a commandline based debug tool which allows for an easy testing and debugging of ROS services, e.g. a service can be manually called from the command line.
+	\newline
+	\newline
+	\begin{large}\textbf{Available sub-commands:}\end{large}
+	\begin{itemize}
+		\item rosservice list:   \textit{ print information about active services}
+		\item rosservice call:   \textit{call the service with the provided args}
+		\item rosservice type:   \textit{print service type}    
+		\item rosservice find:   \textit{find services by service type}
+		\item rosservice uri:    \textit{ print service ROSRPC uri}
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosservice (2)}
+	\textbf{Example:} A given turtle demo was used for the following example.
+	\newline
+	The \textit{list} command shows the services from the turtlesim node demo.
+	\textbf{Command:} 
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_list.txt}
+	
+	\textbf{Output:}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_list_2.txt}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosservice (3)}
+	\textbf{Example:} The \textit{type} command shows what type the service is.
+	\newline
+	\newline
+	\textbf{Command:} 
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear.txt}
+	\textbf{Output:}
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_1.txt}
+	This service is empty, this means when the service call is made it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response).
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{rosservice (4)}
+	\textbf{Example:} The \textit{call} command perform the used service.
+	\textbf{Command:} 
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_2.txt}
+	There are no further arguments because the service is of type empty.
+	\newline
+	Otherwise the usage is:
+	\lstinputlisting[frame=single, basicstyle=\footnotesize\ttfamily, language=C]{./listings/rosservice_clear_3.txt}
+	This does what expected, it clears the background of the turtlesim\_node.
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[h!]
+				\includegraphics[width = 0.7\textwidth]{./images/turtle_line.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[h!]
+				\includegraphics[width = 0.7\textwidth]{./images/turtle_clear.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{ rossrv}
+	\textbf{rossrv} is a command-line based debugging tool for displaying information about ROS Service types.
+	\newline
+	\newline
+	\begin{large}\textbf{Available sub-commands for rossrv:}\end{large}
+	\begin{itemize}
+		\item rossrv show: Show service description
+		\item rossrv list: List all services
+		\item rossrv md5: Display service md5sum
+		\item rossrv package: List services in a package
+		\item rossrv packages: List packages that contain services
+		
+	\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
 %\begin{frame}[allowframebreaks]{References}
 %\scriptsize{\bibliographystyle{ieeetr}}
 %\bibliography{references} %bibtex file name without .bib extension

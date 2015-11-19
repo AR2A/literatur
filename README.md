@@ -1,10 +1,14 @@
 # AR2A / literatur
 This repository contains all relevant documentation for all ARRA/AR2A efforts.
 
+## How can you help us?
+The ressources available in this respository provide a good starting point if you want to work with the robot operating system (ROS). Although the quality of our documentation has already reached an acceptable level we acknowledge that improvements are always possible. Please help us to enhance the quality and also quantity of our documentation even further. In order to do that the following steps are necessary:
+* **Fork** our repository ( https://help.github.com/articles/fork-a-repo/ )
+* Perform the desired improvements to your local copy and **push the changes** to your fork.
+* Initiale a **pull request** ( https://help.github.com/articles/using-pull-requests/ )
+
 ## ros
 * **ros-basics**: Basic introduction into the Robot Operating System (ROS).
-
-* **ros-build-debug-launch-utils**: Basic introduction into the old build system (rosbuild) as well as useful tools for debugging ROS including roslaunch. [DEPRECATED]
 
 * **ros-build-system**: Introduction in the ROS build system.
 
