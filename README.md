@@ -1,6 +1,20 @@
 # AR2A / literatur
 This repository contains all relevant documentation for all ARRA/AR2A efforts.
 
+## How-to-build?
+* Clone our repository:
+'''
+git clone https://github.com/AR2A/literatur.git
+'''
+* Navigate to the cloned repository:
+'''
+cd literatur
+'''
+* Invoke make (or "make clean", "make cleanall")
+'''
+make
+'''
+
 ## How can you help us?
 The resources available in this repository provide a good starting point if you want to work with the robot operating system (ROS). Although the quality of our documentation has already reached an acceptable level we acknowledge that improvements are always possible. Please help us to enhance the quality and also quantity of our documentation even further. In order to do that the following steps are necessary:
 * **Fork** our repository ( https://help.github.com/articles/fork-a-repo/ )
