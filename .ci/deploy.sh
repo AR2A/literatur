@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BRANCH=pdf
-TARGET_REPO=mthz/literatur.git
+TARGET_REPO=AR2A/literatur.git
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo -e "Starting to deploy to Github Pages\n"

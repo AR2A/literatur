@@ -2,8 +2,7 @@
 This repository contains all relevant documentation for all ARRA/AR2A efforts.
 
 ## Pdf
-[![Build Status](https://travis-ci.org/mthz/literatur.svg?branch=master)](https://travis-ci.org/mthz/literatur)
- https://github.com/mthz/literatur/tree/pdf
+[![Build Status](https://travis-ci.org/ar2a/literatur.svg?branch=master)](https://travis-ci.org/AR2A/literatur)  https://github.com/AR2A/literatur/tree/pdf
 
 
 ## How-to-build?
