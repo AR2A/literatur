@@ -1,6 +1,11 @@
 # AR2A / literatur
 This repository contains all relevant documentation for all ARRA/AR2A efforts.
 
+## Pdf
+[![Build Status](https://travis-ci.org/mthz/literatur.svg?branch=master)](https://travis-ci.org/mthz/literatur)
+ https://github.com/mthz/literatur/tree/pdf
+
+
 ## How-to-build?
 * Clone our repository:
 ```
@@ -26,7 +31,7 @@ The resources available in this repository provide a good starting point if you 
 
 * **ros-build-system**: Introduction in the ROS build system.
 
-* **ros-tools-roslauch**: Introduction in roslaunch which can be used to start multiple nodes with one call.
+* **ros-tools-roslaunch**: Introduction in roslaunch which can be used to start multiple nodes with one call.
 
 * **ros-tools-rqt**: Introduction in rqt which is a graphical debugging tool for ROS.
 

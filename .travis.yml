@@ -1,0 +1,9 @@
+before_install:
+- sudo apt-get update && sudo apt-get install -y --no-install-recommends latex-beamer
+  texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+script:
+- make > /dev/null
+after_success: bash .ci/deploy.sh
+env:
+  global:
+  - secure: NDP5xvqP7qDU+RKnLTpsw7qFqMUb8/Kn/W4Xwn73NxRzHlDQTDVuIdkTUZUenkxgI+4k9VootvPd2/bEyVVkIvaTokgLDl0UZiyMIahYNxUtlVIobPGqBPJNOiJn8cmWNNEGOBS+dCJV0WNxvL9ZHNPfa3dnHP46LBgtx5cN44L4f8d0a5E7LNrhi0I1zaAZytoCqCTbGf1B0EalDuV0kQOfJrXSLZQVGeNG/wpD3Q8wmCE1j7OxDnSpIsVJ9ecpS7YmMjUpAfvGCP55DaIGCu6+CkRmOBaQzAK0lLdV+BWSp/O2mg2jBK/HAN66k5DyY8lATMlU5uArSc8DMu1LFA6HZDSgQSC7Vd5l3PmUs0faaz3EQlCkC0sp2sO2vH7rKGQJPeTt+BY8qIPPPcDMZw1sLgcaNg5tnXsKX8+cmV9rLaasqiSxKLCHL4JmL1nhtZO3hBXfPqSfzT46hC4ZhY6XhBrsIDKLxTXHHxDNakEq+Y4LDOFosHVr5jm+T1KK+8NTpxFlDiE+zIaj9h17EvaF2WKIb0UulsRwjhfYWw5I1i/7u3WxmwoCZIHi1SnN8RLJ+gySBkWzU4XSKJE9SbNNO2Or8a4GSYzCbxka96YqkGbpfRTwCcOIiFbrlaTsZ/mxPJt72YGLUaZemW9lfmNhpkp9raosM5CXTSVoHCU=
