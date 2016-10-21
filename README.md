@@ -1,10 +1,6 @@
 # AR2A / literatur
 This repository contains all relevant documentation for all ARRA/AR2A efforts.
 
-## Travis built PDFs
-[![Build Status](https://travis-ci.org/AR2A/literatur.svg?branch=master)](https://travis-ci.org/AR2A/literatur) https://github.com/AR2A/literatur/tree/pdf
-
-
 ## How-to-build?
 * Clone our repository:
 ```
